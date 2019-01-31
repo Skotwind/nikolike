@@ -23,7 +23,23 @@ body{background: {% static "lol.png" %}}
 <br>
 <hr>
 <br>
+{% for conn in content %}
+    <br>
+<h2>{{ conn.0.Photo_name }}</h2>
 <div class="row">
+<div class="col">
+    <div class="row"><img src="{% static "crepe.png" %}" height="400px" style="opacity: 0.6"></div>
+    <div class="row"></div>
+</div>
+<div class="col-1"></div>
+<div class="col header">{{ conn.0.Photo_about }}</div>
+</div>
+<hr>
+<a type="button" class="btn  btn-block" style="background:#08666e;color: #fdeacf " data-toggle="collapse" data-target="#demo">Choose Size</a>
+<hr>
+<div id="demo" class="collapse">
+
+<div class="row" style="font-style: oblique">
 <div class="col">
     <div class="col"><img src="{% static "sm.png" %}" height="70px"></div>
     <div class="col"> Small</div>
@@ -37,6 +53,10 @@ body{background: {% static "lol.png" %}}
     <div class="col"> Big </div>
 </div>
 </div>
+
+</div>
+{% endfor %}
+
 
 
 

@@ -8,7 +8,7 @@ class Photo(models.Model):
     class Meta():
         db_table = "Photo"
 
-    Photo_img = models.ImageField()
+    Photo_img = models.ImageField(upload_to='photos', blank=True)
     Photo_name = models.CharField(max_length = 200)
     Photo_about = models.TextField()
     Photo_date = models.DateTimeField(auto_now_add = True)
