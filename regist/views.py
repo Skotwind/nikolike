@@ -11,7 +11,8 @@ class Regist:
             content = csrf(request)
             content["status"] = "Registration:"
             content['url'] = "/regist/regist/"
-            return render(request, 'index.html', content,{"user":auth.get_user(request).username})
+            content['user'] = auth.get_user(request).username
+            return render(request, 'index.html', content)
         else:
             try:
                 user = User.objects.create_user(username=request.POST.get('login', ""),
@@ -33,7 +34,8 @@ class Regist:
             content = csrf(request)
             content["status"] = "Login to account:"
             content['url'] = "/regist/login/"
-            return render(request,"index.html", content,{"user":auth.get_user(request).username})
+            content['user'] = auth.get_user(request).username
+            return render(request,"index.html", content)
         else:
             user = auth.authenticate(username=request.POST['login'],
                                      password=request.POST['password'])

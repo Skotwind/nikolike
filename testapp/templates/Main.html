@@ -12,7 +12,6 @@
     outline-style: double;
     border-color: darkcyan;
 }
-body{background: {% static "lol.png" %}}
 
 </style>
 <br><br><br>
@@ -23,12 +22,13 @@ body{background: {% static "lol.png" %}}
 <br>
 <hr>
 <br>
+    <h1>hello</h1>
 {% for conn in content %}
     <br>
 <h2>{{ conn.0.Photo_name }}</h2>
 <div class="row">
 <div class="col">
-    <div class="row"><img src="{% static "crepe.png" %}" height="400px" style="opacity: 0.6"></div>
+    <div class="row"><img src='{{ media }}{{ conn.0.Photo_img }}' height="400px" style="opacity: 0.6"></div>
     <div class="row"></div>
 </div>
 <div class="col-1"></div>

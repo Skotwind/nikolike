@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'nikolike.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'django_db',
-        'USER': 'skotwind',
-        'PASSWORD': '2106acdc',
+        'USER': 'Django_db',
+        'PASSWORD': 'password',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

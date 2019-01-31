@@ -19,6 +19,7 @@ from django.urls import re_path, include
 urlpatterns = [
     re_path('admin/', admin.site.urls),
     re_path('video/', include('video.video_urls')),
+    re_path('^$', include('video.video_urls')),
     re_path('regist/', include('regist.regist_urls')),
     re_path('test/', include('testapp.test_urls')),
 ]

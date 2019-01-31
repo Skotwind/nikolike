@@ -1,12 +1,9 @@
 jQuery("document").ready(function () {
-
-    jQuery(".videolikecom").on('click', function ()
+    jQuery(".likecom").on('click', function ()
     {
         var comm_id = jQuery(this).attr('id');
-        console.log(comm_id);
         jQuery.ajax
         ({
-
             type:"GET",
             url:"/video/addlikecom/",
             data:{"coment_id": comm_id},

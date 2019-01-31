@@ -80,16 +80,17 @@ row3 {
                     <hr>
                         <div class="col-8"><h6 style="opacity: 0.6;">Date: {{ comm.0.Comment_date }}</h6> </div>
                         <div class="col-2">
-                            <img src="{% static 'like.png' %}" height="20px"  class="videolikecom" id="{{ comm.0.id}}">
+                            <img src="{% static 'like.png' %}" height="20px"  class="likecom" id="{{ comm.0.id }}">
                             <h5 id="{{ comm.0.id }}comlikes">{{ comm.0.Comment_likes }}</h5>
                         </div>
                         </div>
                     <hr>
                     {% endfor %}
-                      <form action="/video/addcomment/{{ cont.0.id }}/" method = "post">
+                      <form>
                         {% csrf_token %}
-                        {{ form }}
-                         <input type="submit" class="button" value="Добавить коментарий">
+                          <label for="comment">Comment:</label>
+                          <textarea id="{{ cont.0.id }}" class="form-control" rows="5"  name="comment"></textarea>
+                         <button type="button" class="btn btn-success">Basic</button>
                       </form>
                     {% else %}
                         <h5 style="opacity: 0.6;">Register or login to view comments.</h5>

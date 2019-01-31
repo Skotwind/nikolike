@@ -7,6 +7,7 @@ from .form import CommentForm
 from django.template.context_processors import csrf
 from django.contrib import auth
 
+import json
 
 
 
@@ -61,13 +62,13 @@ def showone(request, video_id):
 
 
 def addcomm(request, video_id):
+    print(request.path_info)
     if request.POST:
-        forma = CommentForm(request.POST)
-        if forma.is_valid():
-            comment = forma.save(commit=False)
-            comment.Comment_Video = Video.objects.get(id=video_id)
-            comment.Comment_User = User.objects.get(id=request.user.id)
-            forma.save()
+        comment = Comment()
+        comment.Comment_Video = Video.objects.get(id=video_id)
+        comment.Comment_text = request.POST['comment']
+        comment.Comment_User = User.objects.get(id=request.user.id)
+        comment.save()
     return redirect('/video/all')
 
 
@@ -80,8 +81,23 @@ def addlike(request):
 
 def addlikecom(request):
     if request.GET:
-        comment = Comment.objects.get(id=request.GET["comm_id"])
+        id_comm = request.GET['coment_id']
+        comment = Comment.objects.get(id=id_comm)
         comment.Comment_likes += 1
         comment.save()
     return HttpResponse(comment.Comment_likes)
+
+def addcommajax(request):
+    if request.GET:
+        comment = Comment()
+        comment.Comment_Video = Video.objects.get(id=request.GET['idvideo'])
+        comment.Comment_text = request.GET['text']
+        comment.Comment_User = User.objects.get(id=request.user.id)
+        comment.save()
+
+        response_data = {}
+        response_data['user'] = auth.get_user(request).username
+        response_data['date'] = str(comment.Comment_date)
+    return HttpResponse(json.dumps(response_data),
+            content_type="application/json")
 # Create your views here.
