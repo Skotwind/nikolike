@@ -46,7 +46,7 @@ class Photos:
         content = []
         for pho in photos:
             photo_con = [pho, []]
-            comments = CommentPhoto.objects.filter(Comment_Video_id=pho.id)
+            comments = CommentPhoto.objects.filter(Comment_Photo_id=pho.id)
             for com in comments:
                 user = User.objects.get(id=com.Comment_User_id)
                 photo_con[1].append((com, user))
