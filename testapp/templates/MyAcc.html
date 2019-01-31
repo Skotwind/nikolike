@@ -1,0 +1,43 @@
+{% extends 'maintemplate.html' %}
+{% load staticfiles %}
+{% block Profile %}
+<style>
+
+    .header{
+        padding: 20px;
+        text-align: center;
+        outline-style: double;
+        border-color: darkcyan;
+
+    }
+    .bor {
+      width: 300px;
+      border: 25px ;
+      padding: 25px;
+      margin: 25px;
+    }
+
+</style>
+<br><br><br>
+
+    <div class="header"><h1 style="color: #85583f">My Profile</h1></div>
+        <div class="row">
+            <div class="col">
+               <div class="bor">
+
+                <div class="card">
+                  <div class="card-header"><img src="{% static "user.png" %}" height="200px" ></div>
+                  <div class="card-body"><h2>User name: {{ user }}</h2></div>
+                  <div class="card-footer">Footer</div>
+                </div>
+               </div>
+            </div>
+            <div class="col">
+                <div class="bor">hello</div>
+            </div>
+            <div class="col">
+                <div class="bor">hello</div>
+            </div>
+        </div>
+
+{% endblock %}

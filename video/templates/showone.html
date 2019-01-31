@@ -1,0 +1,21 @@
+{% extends 'maintemplate.html' %}
+{% load staticfiles %}
+{% block OneVideo %}
+    <iframe width="853" height="480" src={{ video.Video_url }} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <h1>{{ video.Video_name }}</h1>
+    <h2>{{ video.Video_o }}</h2>
+    <h2><img src="{% static 'like.jpg' %}" height="50px">{{ video.Video_likes }}</h2>
+    <h2>Date: {{ video.Video_date }}</h2>
+    {% for com in comments %}
+        <hr>
+        <h2><b>User: {{ com.1 }}</b></h2>
+        <h4>{{ com.0.Comment_text }}</h4><small>likes comment: {{ com.0.Comment_likes }}</small>
+        <h3>Date: {{ com.0.Comment_date }}</h3>
+    {% endfor %}
+<form action="/video/addcomment/{{video.id}}/" method = "post">
+    {% csrf_token %}
+    <label for="comment">Comment:</label>
+     <textarea class="form-control" rows="5" id="comment"></textarea>
+    <input type="submit" class="button" value="Добавить коментарий">
+</form>
+{% endblock %}

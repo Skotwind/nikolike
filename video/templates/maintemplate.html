@@ -1,0 +1,134 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="{% static 'script.js' %}"></script>
+    <script type="text/javascript" src="{% static 'script2.js' %}"></script>
+    <style>
+
+      .new1{
+        text-align: center;
+
+      }
+    body {
+        background-attachment: fixed;
+        height: 5000px;
+        background-color: green; /* For browsers that do not support gradients */
+        background-image: linear-gradient(to bottom right, #faf6ea,#c37a5a);
+    }
+    </style>
+</head>
+
+
+
+<h1 style="background-color: #fdeacf;">
+    <nav class="navbar navbar-expand-sm fixed-top " style="background-color: #08666e; color: #fdeacf">
+        <h4>
+            <div class="btn-group">
+            <a class="nav-link text-light fo" href="/test/main/">Main</a>
+            <a class="nav-link text-light fo" href="/video/all/">AllVideo</a>
+            <a class="nav-link text-light fo" href="/test/test1/">Test</a>
+            <a class="nav-link text-light fo" href="/test/test2/">Test2</a>
+            <a class="nav-link text-light fo" href="/test/test3/">Test3</a>
+            <div class="btn-group">
+                <a class="nav-link text-light "  data-toggle="dropdown" >
+                    Account
+                </a>
+
+
+                <div class="dropdown-menu">
+                    {% if user %}
+
+
+                        <a class="dropdown-item" href="/test/my_profile">My Profile</a>
+                        <a class="dropdown-item" href="#">My orders</a>
+                        <a class="dropdown-item" href="#">Liked</a>
+                        <a class="dropdown-item" href="#">Answersetetet</a>
+                        {% if user == admin %}
+                            <a class="dropdown-item" href="/admin">Admin</a>
+                        {% endif %}
+                        <a class="dropdown-item" href="/regist/logout">logout</a>
+
+                    {% elif "AnonymousUser" %}
+                        <a class="dropdown-item" href="/regist/login/">Login<span class="spinner-grow spinner-grow-sm" style="position: center"></span></a>
+                        <a class="dropdown-item" href="/regist/regist/">Register<span class="spinner-grow spinner-grow-sm" style="position: center"></span></a>
+                    {% endif %}
+
+                </div>
+          </div>
+        </h4>
+        <div class="col">
+
+          </div>
+          <div class="col ">
+              {% if user %}
+
+                   <h6 style="color: snow">
+                        Logged in as: {{ user }}
+                  </h6>
+
+              {% endif %}
+          </div>
+          <div class="col-end">
+              <form class="form-inline" action="/action_page.php">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" >
+                <button class="btn  " type="submit" style="background-color: #c37a5a;color: #faf6ea">Search</button>
+              </form>
+          </div>
+    </nav>
+</h1>
+<br><br>
+<body>
+{% if user == admin %}
+<div class="alert alert-success">
+  <strong>Success!</strong> Indicates a successful or positive action.
+</div>
+{% endif %}
+<div class = "container">
+<br>
+    <div class="new1">
+    {% if user %}
+    {% block AllVideos %}{% endblock %}
+    {% else %}
+        <img src="{% static "candle.png" %}" height="200px" style="opacity: 0.2">
+        <br>
+        <h3 style="opacity: 0.6">Ooops!You are not logged in. Your options are limited.Please
+            <a href="/regist/regist/" class="alert-link"style="color: #4c241a">log in to your account</a>  or
+            <a href="/regist/regist/" class="alert-link"style="color: #4c241a">create a new one</a>.</h3>
+    {% endif %}
+    {% block OneVideo %}{% endblock %}
+    {% block index %}{% endblock %}
+    {% block test %}{% endblock %}
+    {% block main %}{% endblock %}
+    {% block test2 %}{% endblock %}
+    {% block Profile %}{% endblock %}
+    </div>
+</div>
+
+</body>
+
+<div class="footer">
+    <hr>
+    <div style="text-align: center;opacity: 0.3">
+    <h6>Ебучий Django c PyCharm'ом не дают поставить нормальный бэкграунд.</h6>
+     <h6>Наслаждайтесь блядским градиентом.</h6>
+        <h6>2018-2019</h6>
+    </div>
+</div>
+
+
+</html>

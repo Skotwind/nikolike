@@ -1,0 +1,105 @@
+{% extends 'maintemplate.html' %}
+{% load staticfiles %}
+{% block AllVideos %}
+
+<style>
+.header {
+  padding: 20px;
+  text-align: center;
+}
+
+.row1 {
+  text-align: center;
+  border: 1px solid gray;
+  padding: 20px;
+}
+row2 {
+  text-align: center;
+  padding: 20px;
+
+p {
+  text-indent: 50px;
+  text-align: justify;
+  letter-spacing: 3px;
+}
+row3 {
+    text-align: left;
+    text-indent: 5px;
+}
+.t {
+  text-indent: 100px;
+  letter-spacing: 20px;
+}
+</style>
+    <div class="header" style="color: #85583f">
+        <h1>AllVideos</h1>
+    </div>
+    <br>
+{% for cont in content %}
+    <div class="header"><h1><i><a href="/video/get/{{ cont.0.id }}" style="color: #974d26">{{ cont.0.Video_name }}</a></i></h1></div>
+    <div class="row">
+        <div class="col-9">
+            <div class="row">
+            <iframe width="800" height="480" src={{ cont.0.Video_url }} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        <hr>
+            <br>
+            <div class="row">
+                <div class="col-7 header">
+                    <h3 >Date: {{ cont.0.Video_date }}</h3>
+                </div>
+                <div class="col-2 header"></div>
+                <div class="col-3">
+                    <img src="{% static 'like.png' %}" height="50px"  class="videolike" id="{{ cont.0.id}}">
+                    <h3 id="{{ cont.0.id }}videolikes">{{ cont.0.Video_likes }}</h3>
+                </div>
+            </div>
+            <hr>
+                <a type="button" class="btn  btn-block" style="background:#08666e;color: #fdeacf " data-toggle="collapse" data-target="#demo">Show/Hide All Comments</a>
+                <hr>
+                <div id="demo" class="collapse">
+              {% if user %}
+                {% for comm in cont.1 %}
+                    <div class="row">
+                        <div class="col-2 row1">
+                            <div class="row2"><img src="{% static 'user.png' %} " height="70px"></div>
+                            <hr>
+                            <div class="row2"><h5><i>User: {{ comm.1 }}</i></h5></div>
+                        </div>
+                        <div class="col-9  ">
+                            <div class="row2"><i>Comment:</i></div>
+                            <hr>
+                            <div class="row" style="text-align: center;text-indent: 20px;">
+                                  {{ comm.0.Comment_text }}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                    <hr>
+                        <div class="col-8"><h6 style="opacity: 0.6;">Date: {{ comm.0.Comment_date }}</h6> </div>
+                        <div class="col-2">
+                            <img src="{% static 'like.png' %}" height="20px"  class="videolikecom" id="{{ comm.0.id}}">
+                            <h5 id="{{ comm.0.id }}comlikes">{{ comm.0.Comment_likes }}</h5>
+                        </div>
+                        </div>
+                    <hr>
+                    {% endfor %}
+                      <form action="/video/addcomment/{{ cont.0.id }}/" method = "post">
+                        {% csrf_token %}
+                        {{ form }}
+                         <input type="submit" class="button" value="Добавить коментарий">
+                      </form>
+                    {% else %}
+                        <h5 style="opacity: 0.6;">Register or login to view comments.</h5>
+                    {% endif %}
+                    <div class="row"><hr></div>
+                </div>
+        </div>
+
+        <div class="col-3 row1">
+            <p>{{ cont.0.Video_o }}</p>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}

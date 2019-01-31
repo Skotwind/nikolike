@@ -1,0 +1,24 @@
+{% extends 'maintemplate.html' %}
+{% load staticfiles %}
+{% block main %}
+<style>
+. {
+  padding: 20px;
+  text-align: center;
+}
+.header{
+    padding: 20px;
+    text-align: center;
+    outline-style: double;
+    border-color: darkcyan;
+}
+body{background: {% static "lol.png" %}}
+
+</style>
+<br><br><br>
+
+    <div class="header" style="color: #85583f" >
+        <h1>Main</h1>
+    </div>
+
+{% endblock %}
