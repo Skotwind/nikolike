@@ -19,25 +19,23 @@
 
 </style>
 <br><br><br>
-
     <div class="header"><h1 style="color: #85583f">My Profile</h1></div>
+
         <div class="row">
             <div class="col">
                <div class="bor">
-
                 <div class="card">
                   <div class="card-header"><img src="{% static "user.png" %}" height="200px" ></div>
                   <div class="card-body"><h2>User name: {{ user }}</h2></div>
-                  <div class="card-footer">Footer</div>
+                  <div class="card-footer">{{ date }}</div>
                 </div>
                </div>
             </div>
             <div class="col">
-                <div class="bor">hello</div>
+                <div class="bor">
+                    <form action="MyAcc.html" method="POST">
+                        {% csrf_token %}
+                        <a class="button" href="/regist/newname/" name="inp">Main</a>
+                    </form>
             </div>
-            <div class="col">
-                <div class="bor">hello</div>
-            </div>
-        </div>
-
 {% endblock %}

@@ -16,12 +16,16 @@ class Regist:
         else:
             try:
                 user = User.objects.create_user(username=request.POST.get('login', ""),
-                                                password=request.POST.get('password',""))
+                                                password=request.POST.get('password',""),
+                                                first_name=request.POST.get('name',""),
+                                                last_name=request.POST.get('last', ""),
+                                                email=request.POST.get('email',""),)
+
             except:
                 user = None
             if user:
                 auth.login(request, user)
-                return redirect('/video/all/',{"user":auth.get_user(request).username})
+                return redirect('/regist/account/',{"user": auth.get_user(request).username},)
             else:
                 content = csrf(request)
                 content["status"] = "Registration:"
@@ -55,6 +59,24 @@ class Regist:
     def logout(self, request):
         auth.logout(request)
         return redirect("/regist/login/",{"user":auth.get_user(request).username})
+
+    def show(self, request):
+        acc ={}
+        acc["user"] = auth.get_user(request).username
+        acc["name"] = auth.get_user(request).first_name
+        acc["last"] = auth.get_user(request).last_name
+        acc["mail"] = auth.get_user(request).email
+        acc["date"] = auth.get_user(request).date_joined
+        return render(request, "MyAcc.html", acc)
+
+    def newname(self,request):
+        if not request.POST:
+           print("no")
+           content = csrf(request)
+        else:
+           print("yes")
+        return render(request,"MyAcc.html",content)
+
 
 regist = Regist()
 

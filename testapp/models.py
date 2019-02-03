@@ -41,3 +41,17 @@ class UserAcc(models.Model):
 
     def __str__(self):
         return self.User_name
+
+class Cake(models.Model):
+    class Meta():
+        db_table = "Cake"
+
+    Cake_name = models.TextField(max_length=200)
+    Cake_weight = models.IntegerField(default=1)
+    Cake_calories = models.IntegerField()
+    Cake_type = models.TextField(max_length=200)
+    Cake_rating = models.IntegerField(default=5)
+    Cake_composition = models.TextField(max_length=2000)
+
+    def __str__(self):
+        return self.Cake_name

@@ -8,6 +8,9 @@ User = get_user_model()
 
 class Test:
 
+
+    sumn = 0
+
     def test1(self,request):
         if not request.POST:
             return render(request,"testapp.html",{"user":auth.get_user(request).username})
@@ -33,14 +36,32 @@ class Test:
     def test2(self, request):
         return render(request, "testapp2.html",{"user":auth.get_user(request).username})
 
-    def acc(self, request):
-        return render(request, "MyAcc.html",{"user":auth.get_user(request).username})
     def test3(self, request):
-        return render(request, "test.html",{"user":auth.get_user(request).username})
+        return render(request, "testapp2.html",{"user":auth.get_user(request).username})
+
+    def but1(self, request):
+        print("but1 +1")
+        print(self.sumn)
+        self.sumn += 1
+        return render(request, "testapp2.html",)
+
+    def but2(self, request):
+        print("but2 +2")
+        print(self.sumn)
+        self.sumn += 2
+        return render(request, "testapp2.html",)
+
+    def but3(self, request):
+        print("but3 +10")
+        print(self.sumn)
+        self.sumn += 10
+        return render(request, "testapp2.html",)
+
 
 class Photos:
 
     def showall(request):
+        print("go")
         # [[Photo,[(comment, user),(comment, user),(comm, user),.....]],[video,],[video,].......]
         photos = Photo.objects.all()
         content = []
