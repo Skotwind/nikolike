@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'gallery',
     'testapp',
     'regist',
     'video',
@@ -127,4 +128,4 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "testapp/../testapp/media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "/testapp/media")

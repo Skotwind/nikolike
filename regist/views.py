@@ -8,12 +8,14 @@ from django.contrib import auth
 class Regist:
     def reg(self, request):
         if not request.POST:
+            print("not post")
             content = csrf(request)
             content["status"] = "Registration:"
             content['url'] = "/regist/regist/"
             content['user'] = auth.get_user(request).username
             return render(request, 'index.html', content)
         else:
+            print("post")
             try:
                 user = User.objects.create_user(username=request.POST.get('login', ""),
                                                 password=request.POST.get('password',""),

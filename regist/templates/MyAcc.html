@@ -21,21 +21,37 @@
 <br><br><br>
     <div class="header"><h1 style="color: #85583f">My Profile</h1></div>
 
+        <br>
+
+    <div class="row1">
+        <div class="row" style="opacity: 0.8;text-align: left;"><p>
+            <ul class="b">
+            <li>На этой вы можете видеть свой уникальный профиль.</li>
+            <li>Пока что это все ваши возможности.</li>
+            <li>Тут ещё должна быть информация о вас но что т не выводит.</li>
+            </ul>
+        </div>
+    </div>
+<br>
+
         <div class="row">
             <div class="col">
                <div class="bor">
                 <div class="card">
                   <div class="card-header"><img src="{% static "user.png" %}" height="200px" ></div>
                   <div class="card-body"><h2>User name: {{ user }}</h2></div>
-                  <div class="card-footer">{{ date }}</div>
+                  <div class="card-footer"><a class="button" href="/regist/logout" style="color: black">logout</a></div>
                 </div>
                </div>
             </div>
             <div class="col">
-                <div class="bor">
-                    <form action="MyAcc.html" method="POST">
-                        {% csrf_token %}
-                        <a class="button" href="/regist/newname/" name="inp">Main</a>
-                    </form>
+                <div class="row">
+                <h3>{{ data }}</h3> </div>
+                <h3>{{ last }}</h3>
+                <h3>{{ first }}</h3>
+                <h3>{{ email }}</h3>
             </div>
+
+
+
 {% endblock %}

@@ -30,11 +30,33 @@ row3 {
   text-indent: 100px;
   letter-spacing: 20px;
 }
+
+
+
 </style>
     <div class="header" style="color: #85583f">
         <h1>AllVideos</h1>
     </div>
     <br>
+
+    <div class="row1">
+        <div class="row" style="opacity: 0.8;text-align: left;"><p>
+            <ul class="b">
+            <li>На этой странице через админку можно размещать видеофайлы любого характера.</li>
+            <li>Вместе с видеофайлами можно сохранить информацию о них.</li>
+            <li>Кликнув на название видео вы перейдёте на страницу которая никогда не слышала о Bootstrap и CSS.</li>
+            <li>Вы можете оставить свой комментарий под видео.</li>
+            <li>Даже два.</li>
+            <li>Можете оставить их сколько хотите.</li>
+            <li>ВНИМАНИЕ!Что бы коментарий был отрисован нажмите "Post It" и перезагрузите страницу.</li>
+            <li>В скором времени будет исправленно.</li>
+            <li>Вы можете поставить сколько угодно и кому угодно лайков.</li>
+            <li>В скором времени будет исправленно.</li>
+            <li>Удачи.</li>
+            </ul>
+        </div>
+    </div>
+<br>
 
 {% for cont in content %}
     <div class="header"><h1><i><a href="/video/get/{{ cont.0.id }}" style="color: #974d26">{{ cont.0.Video_name }}</a></i></h1></div>
@@ -90,7 +112,7 @@ row3 {
                         {% csrf_token %}
                           <label for="comment">Comment:</label>
                           <textarea id="{{ cont.0.id }}" class="form-control" rows="5"  name="comment"></textarea>
-                         <button type="button" class="btn btn-success">Basic</button>
+                         <button type="button" class="btn btn-success" style="background:#086a72;color: #fdeacf">Post It</button>
                       </form>
                     {% else %}
                         <h5 style="opacity: 0.6;">Register or login to view comments.</h5>
@@ -98,7 +120,6 @@ row3 {
                     <div class="row"><hr></div>
                 </div>
         </div>
-
         <div class="col-3 row1">
             <p>{{ cont.0.Video_o }}</p>
         </div>

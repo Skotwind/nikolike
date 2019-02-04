@@ -5,8 +5,8 @@
 .header {
     padding: 20px;
     text-align: center;
-
-    font-size: 40px;
+    opacity: 0.9;
+    font-size: 25px;
     font-style: oblique;
 }
 
@@ -20,6 +20,12 @@ p {
   text-align: justify;
   letter-spacing: 3px;
 }
+
+ul.b {
+  text-align: left;
+  list-style-type: square;
+}
+
 
 
 </style>
@@ -41,8 +47,12 @@ p {
             <input type="password" class="form-control" name="password">
           </div>
          {% if status == "Registration:" %}
+          <hr>
+          <h5 style="opacity: 0.7">
+            If you want to:
+          </h5>
          <a type="button" class="btn  btn-block" style="background:#08666e;color: #fdeacf " data-toggle="collapse" data-target="#demo">Additional Information</a>
-         <hr>
+
          <div id="demo" class="collapse">
           <div class="form-group">
             <label for="name">Your Name:</label>
@@ -58,11 +68,14 @@ p {
           </div>
          </div>
           {% endif %}
+        {% if status == "Login to account:" %}
           <div class="form-group form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" name="check"> Remember me
+              <input class="form-check-input" type="checkbox" name="check" > Remember me
             </label>
           </div>
+        {% endif %}
+        <hr>
           <button type="submit" class="btn "style="background-color: #c37a5a;color: #faf6ea">Submit</button>
         </form>
         {% if error %}
@@ -78,12 +91,29 @@ p {
     </div>
     <div class="col" >
         <div class="row1">
-            <div class="header" >About</div>
-                <div class="row"><p>
-                    This text is styled with some of the text formatting properties.
-                    The heading uses the text-align, text-transform, and color properties.
-                    The paragraph is indented, aligned, and the space between characters is specified.
-                    The underline is removed from this colored "Try it Yourself" link.
+            <div class="header" ><p>Ваши возможности:</p></div>
+                <div class="row" style="opacity: 0.8"><p>
+                    <ul class="b">
+                    <li>Вы можете создать новый аккаутн.</li>
+                    <li>Вы можете не создать новый аккаунт.</li>
+                    <li>Вы можете укакзать дополнительную информацию о вас при создании нового аккаунта.</li>
+                    <li>Указав дополнительную информацию нам будет легче связаться с вами.</li>
+                    <li>Вы можете войти в существующий аккаунт.</li>
+                    <li>Вы можете не входить в существующий аккаунт.</li>
+                    <li>Вы можете вообще закрыть этот сайт.</li>
+                    <li>Учтите кнопка "Remember me" не работает.</li>
+                    <li>Как и кнопка поиска.</li>
+                    <li>Когда-нибудь здесь будет нормальное приветствие.</li>
+                    <li>Хорошего дня.</li>
+                    <h6>
+                        <div class="dropdown">
+                          <span style="opacity: 0.2">.</span>
+                          <div class="dropdown-content" style="text-align: center;background-color: black;color: darkred">
+                          <h6>Не верьте AnonymousUser!</h6>
+                        </div>
+                    </h6>
+                    </ul>
+
                     </p>
                 </div>
         </div>
