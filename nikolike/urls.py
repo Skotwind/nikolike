@@ -22,5 +22,4 @@ urlpatterns = [
     re_path('^$', include('video.video_urls')),
     re_path('regist/', include('regist.regist_urls')),
     re_path('test/', include('testapp.test_urls')),
-    re_path('gallery/',include('gallery.gal_urls'))
 ]
